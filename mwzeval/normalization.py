@@ -25,6 +25,7 @@ def normalize_data(input_data):
                     slot = slot.lower().replace(' ', '')
                     if slot == "arriveby": slot = "arrive"
                     elif slot == "leaveat": slot = "leave"
+                    elif slot == "value_leaveat": slot = "leave"
                     new_state[slot] =  normalize_state_slot_value(slot, value)
                 turn["state"][domain] = new_state
     
@@ -36,8 +37,8 @@ def normalize_slot_name(slot_name):
     slot_name_mapping = {
      'ADDRESS'   : ['address', 'attraction_address', 'hospital_address', 'hotel_address', 'police_address', 'restaurant_address', 'value_address'],
      'AREA'      : ['area', 'value_area', 'attraction_area', 'restaurant_area', 'hotel_area'],
-     'TIME'      : ['booktime', 'value_time', 'time', 'duration', 'value_duration', 'train_duration', 'arriveby', 'taxi_arriveby', 'value_arrive', 'arrive by', 'train_arriveby', 'leaveat', 'value_leave', 'leave at', 'train_leaveat', 'train_leave', 'train_arrive', 'taxi_leaveat'],
-     'DAY'       : ['day', 'value_day', 'bookday', 'train_day'],
+     'TIME'      : ['booktime','value_booktime', 'value_time', 'time', 'duration', 'value_duration', 'train_duration', 'arriveby', 'taxi_arriveby', 'value_arrive', 'arrive by', 'train_arriveby', 'leaveat','value_leaveat' 'value_leave', 'leave at', 'train_leaveat', 'train_leave', 'train_arrive', 'taxi_leaveat'],
+     'DAY'       : ['day', 'value_day', 'bookday','value_bookday', 'train_day'],
      'PLACE'     : ['destination', 'value_destination', 'departure', 'value_departure', 'value_place', 'train_departure', 'train_destination', 'taxi_destination', 'taxi_departure'],
      'FOOD'      : ['food', 'value_food', 'restaurant_food'],
      'NAME'      : ['name', 'attraction_name', 'hospital_name', 'hotel_name', 'police_name', 'restaurant_name', 'value_name'],
@@ -45,7 +46,7 @@ def normalize_slot_name(slot_name):
      'POST'      : ['postcode', 'attraction_postcode', 'hospital_postcode', 'hotel_postcode', 'restaurant_postcode', 'value_postcode', 'police_postcode'],
      'PRICE'     : ['price', 'value_price', 'entrancefee', 'entrance fee', 'train_price', 'attraction_entrancefee', 'pricerange', 'value_pricerange', 'price range', 'restaurant_pricerange', 'hotel_pricerange', 'attraction_pricerange', 'attraction_price'],
      'REFERENCE' : ['ref', 'attraction_reference', 'hotel_reference', 'restaurant_reference', 'train_reference', 'value_reference', 'reference'],  
-     'COUNT'     : ['stars', 'value_stars', 'hotel_stars', 'bookstay', 'value_stay', 'stay', 'bookpeople', 'value_people', 'people', 'choice', 'value_choice', 'value_count', 'attraction_choice', 'hotel_choice', 'restaurant_choice', 'train_choice'],
+     'COUNT'     : ['stars', 'value_stars', 'hotel_stars', 'bookstay', 'value_stay', 'stay', 'bookpeople','value_bookpeople', 'value_people', 'people', 'choice', 'value_choice', 'value_count', 'attraction_choice', 'hotel_choice', 'restaurant_choice', 'train_choice'],
      'TYPE'      : ['type', 'taxi_type', 'taxi_car', 'value_type', 'value_car', 'car', 'restaurant_type', 'hotel_type', 'attraction_type'],
      'TRAINID'   : ['trainid', 'train_id', 'value_id', 'id', 'train', 'train_trainid'],
      'INTERNET'  : ['internet', 'hotel_internet'],
@@ -253,7 +254,7 @@ def normalize_state_slot_value(slot_name, value):
         return type_to_canonical(value)
     elif slot_name == "food":
         return food_to_canonical(value)
-    elif slot_name in ["arrive", "leave", "arriveby", "leaveat", "time"]:
+    elif slot_name in ["arrive", "leave", "arriveby", "leaveat","value_leaveat", "time"]:
         return time_to_canonical(value)
     elif slot_name in ["parking", "internet"]:
         return "yes" if value == "free" else value
