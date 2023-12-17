@@ -37,7 +37,7 @@ def normalize_slot_name(slot_name):
     slot_name_mapping = {
      'ADDRESS'   : ['address', 'attraction_address', 'hospital_address', 'hotel_address', 'police_address', 'restaurant_address', 'value_address'],
      'AREA'      : ['area', 'value_area', 'attraction_area', 'restaurant_area', 'hotel_area'],
-     'TIME'      : ['booktime','value_booktime', 'value_time', 'time', 'duration', 'value_duration', 'train_duration', 'arriveby', 'taxi_arriveby', 'value_arrive', 'arrive by', 'train_arriveby', 'leaveat','value_leaveat' 'value_leave', 'leave at', 'train_leaveat', 'train_leave', 'train_arrive', 'taxi_leaveat'],
+     'TIME'      : ['booktime','value_booktime', 'value_time', 'time', 'duration', 'value_duration', 'train_duration', 'arriveby', 'taxi_arriveby', 'value_arrive', 'arrive by', 'train_arriveby', 'leaveat', 'value_leaveat', 'value_leave', 'leave at', 'train_leaveat', 'train_leave', 'train_arrive', 'taxi_leaveat'],
      'DAY'       : ['day', 'value_day', 'bookday','value_bookday', 'train_day'],
      'PLACE'     : ['destination', 'value_destination', 'departure', 'value_departure', 'value_place', 'train_departure', 'train_destination', 'taxi_destination', 'taxi_departure'],
      'FOOD'      : ['food', 'value_food', 'restaurant_food'],
